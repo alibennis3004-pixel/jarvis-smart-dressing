@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="Ton dressing personnel et ton styliste intelligent.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <title>JARVIS SMART DRESSING</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="logo">J</div><div class="brand"><b>JARVIS</b><small>SMART DRESSING</small></div>
+  <span class="local-pill"><i></i> PRIVÉ · LOCAL</span>
+</header>
+<main>
+  <section class="hero">
+    <p class="eyebrow">TON STYLISTE PERSONNEL</p>
+    <h1>Bonjour, Ali<span>.</span></h1>
+    <p class="sub">Décris ce que tu veux porter. Je chercherai dans les vêtements que tu as enregistrés.</p>
+    <div class="voicebox">
+      <button id="micBtn" class="mic" aria-label="Parler à Jarvis">🎙</button>
+      <div><b id="voiceTitle">Parler à Jarvis</b><small id="voiceHelp">Appuie puis décris ta tenue.</small></div>
+    </div>
+    <div class="askrow"><input id="request" placeholder="Ex. tenue chill avec pantalon noir"><button id="askBtn">Trouver</button></div>
+    <p id="status" class="status" role="status">Prêt quand tu l'es.</p>
+  </section>
+
+  <nav class="tabs" aria-label="Navigation">
+    <button class="tab active" data-page="wardrobe">Mon dressing</button>
+    <button class="tab" data-page="outfits">Mes tenues</button>
+    <button class="tab" data-page="settings">Réglages</button>
+  </nav>
+
+  <section id="wardrobePage" class="page">
+    <div class="section-title"><div><p class="eyebrow">MA GARDE-ROBE</p><h2>Mes vêtements</h2></div><span id="itemCount" class="count">0 article</span></div>
+    <form id="itemForm" class="panel">
+      <h3>＋ Ajouter un vêtement</h3>
+      <div class="fields">
+        <label>Nom<input name="name" required maxlength="60" placeholder="Jean noir"></label>
+        <label>Catégorie<select name="category"><option value="haut">Haut</option><option value="bas">Pantalon / bas</option><option value="chaussures">Chaussures</option><option value="veste">Veste / manteau</option><option value="accessoire">Accessoire</option></select></label>
+        <label>Couleur<input name="color" required maxlength="30" placeholder="Noir"></label>
+        <label>Style<select name="style"><option>casual</option><option>streetwear</option><option>chic</option><option>sport</option></select></label>
+        <label>Saison<select name="season"><option value="toutes">Toutes saisons</option><option>été</option><option>hiver</option><option>mi-saison</option></select></label>
+        <label class="photo-label">Photo<input name="photo" type="file" accept="image/*"></label>
+      </div>
+      <button class="primary full" type="submit">Enregistrer le vêtement</button>
+    </form>
+    <div class="toolbar"><input id="search" placeholder="Rechercher un vêtement..."><select id="categoryFilter"><option value="">Toutes les catégories</option><option value="haut">Hauts</option><option value="bas">Bas</option><option value="chaussures">Chaussures</option><option value="veste">Vestes</option><option value="accessoire">Accessoires</option></select></div>
+    <div id="wardrobeGrid" class="grid"><div class="empty">Ton dressing est vide. Ajoute ton premier vêtement !</div></div>
+  </section>
+
+  <section id="outfitsPage" class="page hidden">
+    <div class="section-title"><div><p class="eyebrow">TES COMBINAISONS</p><h2>Mes tenues favorites</h2></div></div>
+    <div id="savedOutfits" class="grid"><div class="empty">Tu n'as pas encore enregistré de tenue.</div></div>
+  </section>
+
+  <section id="settingsPage" class="page hidden">
+    <div class="section-title"><div><p class="eyebrow">CONFIGURATION</p><h2>Réglages</h2></div></div>
+    <div class="panel settings">
+      <h3>Stockage et confidentialité</h3>
+      <p>Les vêtements et les photos sont enregistrés dans le stockage de ce navigateur sur cette tablette. Ils ne sont pas envoyés automatiquement à un serveur.</p>
+      <p><b>Important :</b> ne vide pas les données du navigateur si tu veux conserver ton dressing. Fais régulièrement une sauvegarde JSON.</p>
+      <button id="exportBtn" class="secondary full">Exporter une sauvegarde</button>
+      <label class="import-label">Importer une sauvegarde JSON<input id="importFile" type="file" accept="application/json"></label>
+      <button id="clearBtn" class="danger full">Effacer tout mon dressing</button>
+      <p class="tiny">La reconnaissance vocale dépend du navigateur et peut nécessiter une connexion Internet. La sélection de tenues de base fonctionne localement.</p>
+    </div>
+  </section>
+</main>
+<footer>JARVIS SMART DRESSING · Prototype PWA 0.2</footer>
+<script src="app.js"></script>
+</body>
+</html>
